@@ -52,6 +52,7 @@ CREATE TABLE IF NOT EXISTS `uspadvisor`.`students` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `num_usp` CHAR(9) NOT NULL,
   `entry_year` INT NULL DEFAULT NULL,
+  `name` VARCHAR(45) NOT NULL,
   `email` VARCHAR(45) NOT NULL,
   `email_validation_token` CHAR(32) NULL DEFAULT NULL,
   `email_validated_at` TIMESTAMP NULL DEFAULT NULL,
