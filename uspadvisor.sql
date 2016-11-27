@@ -31,7 +31,7 @@ DROP TABLE IF EXISTS `uspadvisor`.`offerings` ;
 CREATE TABLE IF NOT EXISTS `uspadvisor`.`offerings` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `discipline_id` INT(11) NOT NULL,
-  `year` INT(11) NULL DEFAULT NULL,
+  `semester` VARCHAR(45) NULL DEFAULT NULL,
   `schedule` VARCHAR(45) NULL DEFAULT NULL,
   `created_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
