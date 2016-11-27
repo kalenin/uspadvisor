@@ -2,7 +2,6 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
-
 DROP SCHEMA IF EXISTS `uspadvisor` ;
 CREATE SCHEMA IF NOT EXISTS `uspadvisor` DEFAULT CHARACTER SET utf8 ;
 USE `uspadvisor` ;
@@ -15,6 +14,7 @@ DROP TABLE IF EXISTS `uspadvisor`.`disciplines` ;
 CREATE TABLE IF NOT EXISTS `uspadvisor`.`disciplines` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `code` VARCHAR(45) NOT NULL,
+  `name` VARCHAR(100) NOT NULL,
   `curricular_structure` VARCHAR(45) NOT NULL,
   `syllabus` TEXT NULL DEFAULT NULL,
   `category` VARCHAR(45) NULL DEFAULT NULL,
@@ -48,27 +48,6 @@ CREATE TABLE IF NOT EXISTS `uspadvisor`.`offerings` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
-
--- -----------------------------------------------------
--- Table `uspadvisor`.`offering_professor`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `uspadvisor`.`offering_professor` ;
-
-CREATE TABLE IF NOT EXISTS `uspadvisor`.`offering_professor` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `offering_id` INT NOT NULL,
-  `professor_name` VARCHAR(100) NOT NULL,
-  `created_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  INDEX `fk_offering_professor_1_idx` (`offering_id` ASC),
-  CONSTRAINT `fk_offering_professor_1`
-    FOREIGN KEY (`offering_id`)
-    REFERENCES `uspadvisor`.`offerings` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-USE `uspadvisor` ;
 
 -- -----------------------------------------------------
 -- Table `uspadvisor`.`students`
@@ -143,6 +122,27 @@ CREATE TABLE IF NOT EXISTS `uspadvisor`.`evaluations` (
   CONSTRAINT `fk_evaluations_2`
     FOREIGN KEY (`student_id`)
     REFERENCES `uspadvisor`.`students` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `uspadvisor`.`offering_professor`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `uspadvisor`.`offering_professor` ;
+
+CREATE TABLE IF NOT EXISTS `uspadvisor`.`offering_professor` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `offering_id` INT(11) NOT NULL,
+  `professor_name` VARCHAR(100) NOT NULL,
+  `created_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  INDEX `fk_offering_professor_1_idx` (`offering_id` ASC),
+  CONSTRAINT `fk_offering_professor_1`
+    FOREIGN KEY (`offering_id`)
+    REFERENCES `uspadvisor`.`offerings` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
