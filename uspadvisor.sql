@@ -15,10 +15,7 @@ CREATE TABLE IF NOT EXISTS `uspadvisor`.`disciplines` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `code` VARCHAR(45) NOT NULL,
   `name` VARCHAR(100) NOT NULL,
-  `curricular_structure` VARCHAR(45) NOT NULL,
-  `syllabus` TEXT NULL DEFAULT NULL,
-  `category` VARCHAR(45) NULL DEFAULT NULL,
-  `approval_criteria` VARCHAR(45) NULL DEFAULT NULL,
+  `description` VARCHAR(200) NULL,
   `created_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `code_UNIQUE` (`code` ASC))
@@ -35,7 +32,6 @@ CREATE TABLE IF NOT EXISTS `uspadvisor`.`offerings` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `discipline_id` INT(11) NOT NULL,
   `year` INT(11) NULL DEFAULT NULL,
-  `period` VARCHAR(45) NULL DEFAULT NULL,
   `schedule` VARCHAR(45) NULL DEFAULT NULL,
   `created_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
@@ -65,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `uspadvisor`.`students` (
   `password_hash` CHAR(60) NOT NULL,
   `password_recovery_token` CHAR(32) NULL DEFAULT NULL,
   `password_recovery_until` TIMESTAMP NULL DEFAULT NULL,
-  `updated_at` TIMESTAMP NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
