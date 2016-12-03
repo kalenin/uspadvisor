@@ -103,7 +103,7 @@ CREATE TABLE IF NOT EXISTS `uspadvisor`.`evaluations` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `offering_id` INT(11) NOT NULL,
   `student_id` INT(11) NOT NULL,
-  `dificulty` INT(11) NULL DEFAULT NULL,
+  `difficulty` INT(11) NULL DEFAULT NULL,
   `quality` INT(11) NULL DEFAULT NULL,
   `created_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
