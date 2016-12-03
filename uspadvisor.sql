@@ -32,7 +32,6 @@ CREATE TABLE IF NOT EXISTS `uspadvisor`.`offerings` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `discipline_id` INT(11) NOT NULL,
   `semester` VARCHAR(45) NULL DEFAULT NULL,
-  `schedule` VARCHAR(45) NULL DEFAULT NULL,
   `created_at` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   INDEX `fk_offerings_1_idx` (`discipline_id` ASC),
