@@ -57,6 +57,8 @@ CREATE TABLE IF NOT EXISTS `uspadvisor`.`students` (
   `email` VARCHAR(45) NOT NULL,
   `email_validation_token` CHAR(32) NULL DEFAULT NULL,
   `email_validated_at` TIMESTAMP NULL DEFAULT NULL,
+  `question` VARCHAR(200) NULL DEFAULT NULL,
+  `answer` VARCHAR(200) NULL DEFAULT NULL,
   `password_hash` CHAR(60) NOT NULL,
   `password_recovery_token` CHAR(32) NULL DEFAULT NULL,
   `password_recovery_until` TIMESTAMP NULL DEFAULT NULL,
